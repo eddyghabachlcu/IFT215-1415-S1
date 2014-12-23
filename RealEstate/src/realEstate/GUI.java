@@ -68,6 +68,11 @@ public class GUI extends javax.swing.JFrame {
         lblBuyerName.setText("Buyer name:");
 
         btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDetailsLayout = new javax.swing.GroupLayout(pnlDetails);
         pnlDetails.setLayout(pnlDetailsLayout);
@@ -164,6 +169,30 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        String location;
+        if(rbNorth.isSelected()){
+            location="North";
+        }else if(rbMountLebanon.isSelected()){
+            location="Mount Lebanon";
+        }else{
+            location="Beirut";
+        }
+        
+        int surface = 
+                Integer.parseInt(
+                        cbxSurface.getSelectedItem().toString());
+        
+        boolean parking;
+        
+        parking = chkParking.isSelected();
+        
+        String buyerName = txtBuyerName.getText();
+        
+        RealEstate re = new RealEstate(location,surface,parking,buyerName);
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**
      * @param args the command line arguments
