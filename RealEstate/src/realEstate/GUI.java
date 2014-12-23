@@ -126,6 +126,7 @@ public class GUI extends javax.swing.JFrame {
 
         pnlInvoice.setBorder(javax.swing.BorderFactory.createTitledBorder("Invoice"));
 
+        txtInvoice.setEditable(false);
         txtInvoice.setColumns(20);
         txtInvoice.setRows(5);
         jScrollPane1.setViewportView(txtInvoice);
@@ -191,7 +192,9 @@ public class GUI extends javax.swing.JFrame {
         
         String buyerName = txtBuyerName.getText();
         
-        RealEstate re = new RealEstate(location,surface,parking,buyerName);
+        RealEstate re = 
+                new RealEstate(location,surface,parking,buyerName);
+       txtInvoice.setText(re.getInvoice());
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**

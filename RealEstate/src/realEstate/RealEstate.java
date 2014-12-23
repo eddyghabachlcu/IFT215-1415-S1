@@ -73,4 +73,17 @@ public class RealEstate {
         return price;
     }
     
+    public String getInvoice(){
+        String invoice;
+        
+        invoice="A house at "+location
+                +" with a surface of "+surface+" m2";
+        if(parking==true){
+            invoice+=" including a parking";
+        }
+        invoice+=" priced "+getPrice()+" was sold to "
+                +buyerName;
+        return invoice;
+    }
+    
 }
