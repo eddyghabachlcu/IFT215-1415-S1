@@ -133,6 +133,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="North"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rbNorthStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbMountLebanon">
           <Properties>
@@ -141,6 +144,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Mount Lebanon"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rbMountLebanonStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbBeirut">
           <Properties>
@@ -149,6 +155,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Beirut"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rbBeirutStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblSurface">
           <Properties>

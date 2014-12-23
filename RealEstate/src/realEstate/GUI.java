@@ -6,6 +6,8 @@
 
 package realEstate;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Prof
@@ -17,6 +19,10 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        this.setLocationRelativeTo(this);
+        rbNorth.setSelected(true);
+        rootPane.setDefaultButton(btnSubmit);
+        this.setTitle("Real Estate");
     }
 
     /**
@@ -52,12 +58,27 @@ public class GUI extends javax.swing.JFrame {
 
         rbgLocation.add(rbNorth);
         rbNorth.setText("North");
+        rbNorth.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbNorthStateChanged(evt);
+            }
+        });
 
         rbgLocation.add(rbMountLebanon);
         rbMountLebanon.setText("Mount Lebanon");
+        rbMountLebanon.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbMountLebanonStateChanged(evt);
+            }
+        });
 
         rbgLocation.add(rbBeirut);
         rbBeirut.setText("Beirut");
+        rbBeirut.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbBeirutStateChanged(evt);
+            }
+        });
 
         lblSurface.setText("Surface:");
 
@@ -173,29 +194,76 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        String location;
-        if(rbNorth.isSelected()){
-            location="North";
-        }else if(rbMountLebanon.isSelected()){
-            location="Mount Lebanon";
+       
+        if(txtBuyerName.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter buyer name","Waring",JOptionPane.INFORMATION_MESSAGE);
         }else{
-            location="Beirut";
-        }
+                
+            String location;
+            if(rbNorth.isSelected()){
+                location="North";
+            }else if(rbMountLebanon.isSelected()){
+                location="Mount Lebanon";
+            }else{
+                location="Beirut";
+         }
         
-        int surface = 
-                Integer.parseInt(
-                        cbxSurface.getSelectedItem().toString());
+            int surface = 
+                    Integer.parseInt(
+                            cbxSurface.getSelectedItem().toString());
+            
+            boolean parking;
         
-        boolean parking;
+            parking = chkParking.isSelected();
         
-        parking = chkParking.isSelected();
+            String buyerName = txtBuyerName.getText();
         
-        String buyerName = txtBuyerName.getText();
-        
-        RealEstate re = 
+            RealEstate re = 
                 new RealEstate(location,surface,parking,buyerName);
-       txtInvoice.setText(re.getInvoice());
+        txtInvoice.setText(re.getInvoice());
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void changeSurfaceValues(String location){
+        
+        cbxSurface.removeAllItems();
+        switch(location){
+            case "North":
+                cbxSurface.addItem("200");
+                cbxSurface.addItem("250");
+                break;
+            case "Mount Lebanon":
+                cbxSurface.addItem("150");
+                cbxSurface.addItem("200");
+                cbxSurface.addItem("250");
+                break;
+            default:
+                cbxSurface.addItem("150");
+                cbxSurface.addItem("200");
+        }
+    }
+    
+    private void rbNorthStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbNorthStateChanged
+        // TODO add your handling code here:
+        
+        if(rbNorth.isSelected()){
+            changeSurfaceValues("North");
+        }
+    }//GEN-LAST:event_rbNorthStateChanged
+
+    private void rbMountLebanonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbMountLebanonStateChanged
+        // TODO add your handling code here:
+        if(rbMountLebanon.isSelected()){
+            changeSurfaceValues("Mount Lebanon");
+        }
+    }//GEN-LAST:event_rbMountLebanonStateChanged
+
+    private void rbBeirutStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbBeirutStateChanged
+        // TODO add your handling code here:
+        if(rbBeirut.isSelected()){
+            changeSurfaceValues("Beirut");
+        }
+    }//GEN-LAST:event_rbBeirutStateChanged
 
     /**
      * @param args the command line arguments
