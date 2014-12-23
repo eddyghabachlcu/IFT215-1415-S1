@@ -149,6 +149,7 @@ public class GUI extends javax.swing.JFrame {
 
         txtInvoice.setEditable(false);
         txtInvoice.setColumns(20);
+        txtInvoice.setLineWrap(true);
         txtInvoice.setRows(5);
         jScrollPane1.setViewportView(txtInvoice);
 
