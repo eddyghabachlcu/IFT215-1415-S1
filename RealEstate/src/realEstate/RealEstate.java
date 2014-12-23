@@ -46,4 +46,31 @@ public class RealEstate {
     public void setBuyerName(String buyerName){
         this.buyerName=buyerName;
     }
+    
+    public int getPrice(){
+        int m2price, parkingPrice, price;
+        switch(location){
+            case "North":
+                m2price=1000;
+                parkingPrice=10000;
+                break;
+            case "Mount Lebanon":
+                m2price=1500;
+                parkingPrice=15000;
+                break;
+            case "Beirut":
+                m2price=2000;
+                parkingPrice=20000;
+                break;
+            default: 
+                m2price=0;
+                parkingPrice=0;
+        }
+        if(parking==false){
+            parkingPrice=0;
+        }
+        price = (m2price*surface)+parkingPrice;
+        return price;
+    }
+    
 }
